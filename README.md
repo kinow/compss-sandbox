@@ -16,5 +16,5 @@ cd target
 ## Running
 
 ```bash
-runcompss --tracing=true br.eti.kinoshita.compss.Simple 2
+runcompss --tracing=false br.eti.kinoshita.compss.Simple 2
 ```
