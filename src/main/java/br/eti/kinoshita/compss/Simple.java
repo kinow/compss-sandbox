@@ -3,10 +3,13 @@ package br.eti.kinoshita.compss;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class Simple {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnknownHostException {
+        System.out.println("Simple running at " + InetAddress.getLocalHost().getHostName());
         String counterName = "counter";
         int initialValue = Integer.parseInt(args[0]);
 
