@@ -11,13 +11,12 @@ public class Simple {
         int initialValue = Integer.parseInt(args[0]);
 
         // Initialize counter (c -> 1)
-        try {
-            FileOutputStream fos = new FileOutputStream(counterName);
+        try (FileOutputStream fos = new FileOutputStream(counterName)) {
             fos.write(initialValue);
+            fos.flush();
             System.out.println("Initial counter value is " + initialValue);
-            fos.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         // Execute increment (c -> 2)
@@ -26,12 +25,10 @@ public class Simple {
         }
 
         // Open the file and print final counter value (should be 2)
-        try {
-            FileInputStream fis = new FileInputStream(counterName);
+        try (FileInputStream fis = new FileInputStream(counterName)) {
             System.out.println("Final counter value is " + fis.read());
-            fis.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
